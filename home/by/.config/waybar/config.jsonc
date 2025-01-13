@@ -1,0 +1,90 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "spacing": 4,
+  "margin-top": 2,
+  "margin-left": 10,
+  "margin-right": 10,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "hyprland/workspaces",
+    "wlr/taskbar"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "wireplumber",
+    "backlight",
+    "battery",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": 3
+    },
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["foot"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Client": "Terminal"
+    }
+  },
+  "clock": {
+    "format": "{:%H:%M} 🕰️",
+    "format-alt": "{:%A, %d-%m-%Y} ⏳",
+    "tooltip": true,
+    "interval": 60,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["🌕","☀️"],
+    "on-scroll-up": "brightnessctl -n5 s 5%+",
+    "on-scroll-down": "brightnessctl -n5 s 5%-",
+    "tooltip": false,
+    "on-click": "pgrep gammastep && pkill gammastep || gammastep -O 3300"
+  },
+  "wireplumber": {
+    "format": "{volume}% {icon}",
+    "format-muted": "0% 🔇",
+    "format-icons": ["🔈", "🔉", "🔊"],
+    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip": false
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 🔌",
+    "format-plugged": "{capacity}% 🔌",
+    "format-icons": ["🪫❗", "🪫", "🔋", "🔋", "🔋"],
+    "tooltip": true,
+    "tooltip-format": "{timeTo}"
+  },
+  "tray": {
+    "icon-size": 18
+  }
+}
+
