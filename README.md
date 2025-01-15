@@ -81,3 +81,59 @@ exit
 umount -R /mnt
 reboot
 ```
+
+## Hardware Acceleration (for Chromium)
+
+Install all the necessary packages. (For me, they are all placed inside the *packages.txt*)
+
+Ensure that the NVIDIA drivers are correctly installed and loaded.
+```bash
+lsmod | grep nvidia
+```
+
+If you want to use Vulkan, ensure that you have the Vulkan drivers installed for your NVIDIA GPU. You can check if Vulkan is supported by running:
+```bash
+vulkaninfo
+```
+
+You can inspect other commands as well:
+```bash
+lspci | grep -E 'VGA|3D'  # Lists all connected GPUs.
+vdpauinfo  # Shows details about capabilities of the GPU.
+lscpu  # Shows details about the CPU.
+nvidia-smi  # Check the status of your NVIDIA GPU. 
+```
+
+Blocklist nouveau modules, and allow nvidia modules. See */etc/modprobe.d/* folder.
+
+Set the environment variables. See *~/.bash_profile* file.
+
+```bash
+sudo nvim /etc/mkinitcpio.conf  # edit the kernel modules.
+sudo mkinicpio -P  # regenerates the kernel images.
+```
+
+In chromium, go to **chrome://flags** and set the following flags as enabled:
+- Override software rendering list
+- GPU rasterization
+- Zero-copy rasterizer 
+- Out-of-process 2D canvas rasterization.
+- Skia Graphite
+- Accelerated 2D canvas
+- Hardware-accelerated video decode
+- Parallel downloading
+
+After enablling these flags, edit the hyprland config file. You need to run the chromium as shown below.
+
+```bash
+chromium --enable-gpu-rasterization --enable-oop-rasterization --enable-zero-copy --enable-gpu-early-init --enable-features=UseSkiaRenderer,AcceleratedVideoDecodeLinuxGL --enable-vulkan --enable-accelerated-2d-canvas --enable-accelerated-3d-canvas --enable-accelerated-video-decode --enable-gpu-compositing --enable-logging=stderr --log-level=0
+```
+
+Go to page **chrome://gpu** and check if the acceleration enabled in Chromium.
+
+Open a high resolution 4K video on YouTube and run the following commands to watch the effects on the GPUs.
+
+```bash
+radeontop  # View GPU Utilization for total activity percent and individual blocks. (for AMD cards)
+nvtop  # Watch the current processes on both GPUs that the CPU has (iGPU) and the discrete GPU.
+```
