@@ -126,7 +126,7 @@ In chromium, go to **chrome://flags** and set the following flags as enabled:
 After enablling these flags, edit the hyprland config file. You need to run the chromium as shown below.
 
 ```bash
-chromium --enable-gpu-rasterization --enable-oop-rasterization --enable-zero-copy --enable-gpu-early-init --enable-features=UseSkiaRenderer,AcceleratedVideoDecodeLinuxGL --enable-vulkan --enable-accelerated-2d-canvas --enable-accelerated-3d-canvas --enable-accelerated-video-decode --enable-gpu-compositing --enable-logging=stderr --log-level=0
+chromium --flag-switches-begin --enable-gpu-rasterization --enable-oop-rasterization --enable-zero-copy --ignore-gpu-blocklist --enable-gpu-early-init --enable-vulkan --enable-skia-graphite --enable-accelerated-2d-canvas --enable-accelerated-3d-canvas --enable-accelerated-video-decode --enable-gpu-compositing --enable-features=AcceleratedVideoDecodeLinuxGL,CanvasOopRasterization,ParallelDownloading --enable-logging=stderr --log-level=0
 ```
 
 Go to page **chrome://gpu** and check if the acceleration enabled in Chromium.
