@@ -11,7 +11,6 @@ alsa-lib
 alsa-topology-conf
 alsa-ucm-conf
 amd-ucode
-amdvlk
 aom
 apparmor
 apr
@@ -62,6 +61,8 @@ containers-common
 coreutils
 cronie
 cryptsetup
+cuda
+cuda-tools
 curl
 dav1d
 db5.3
@@ -121,6 +122,8 @@ gawk
 gc
 gcc
 gcc-libs
+gcc13
+gcc13-libs
 gcr-4
 gdbm
 gdk-pixbuf2
@@ -169,6 +172,7 @@ hdparm
 hicolor-icon-theme
 hidapi
 highway
+htop
 hunspell
 hwdata
 hyphen
@@ -195,6 +199,8 @@ java-runtime-common
 jbigkit
 jdk-openjdk
 jemalloc
+jre8-openjdk
+jre8-openjdk-headless
 json-c
 json-glib
 jsoncpp
@@ -538,6 +544,7 @@ nvidia-settings
 nvidia-utils
 nvtop
 ocl-icd
+opencl-nvidia
 opencore-amr
 openjpeg2
 openssh
@@ -681,6 +688,7 @@ ttf-liberation
 tzdata
 udisks2
 unibilium
+unzip
 upower
 usbutils
 util-linux
@@ -694,6 +702,7 @@ vmaf
 volume_key
 vulkan-headers
 vulkan-icd-loader
+vulkan-mesa-layers
 vulkan-radeon
 vulkan-tools
 vulkan-validation-layers
@@ -740,6 +749,7 @@ xz
 zeromq
 zig
 zimg
+zip
 zix
 zlib
 zlib-ng
