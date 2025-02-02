@@ -116,7 +116,9 @@ run0 pacman -Syu foot fnott libnotify fuzzel tlp pipewire wireplumber brightness
 htopyazi man-db man-pages bc texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git \
 code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar \
 noto-fonts noto-fonts-emoji nvidia-open nvtop vlc firefox wireguard-tools \
-xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
+mesa-utils vulkan-tools inxi dmidecode inetutils usbutils pciutils \
+
 
 systemctl enable pipewire --user
 systemctl enable wireplumber --user
