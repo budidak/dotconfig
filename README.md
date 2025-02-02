@@ -43,7 +43,7 @@ vim /etc/pacman.conf
 # Edit some lines for optimization before sync the repository.
 pacman -Syy
 
-pacstrap -K base base-devel linux linux-firmware amd-ucode iwd neovim --assume-installed sudo
+pacstrap -K /mnt base base-devel linux linux-firmware linux-headers amd-ucode polkit iwd neovim --assume-installed sudo
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
@@ -69,7 +69,15 @@ nvim /etc/hostname
 nvim /etc/hosts
   # 127.0.0.1  localhost.localdomain  localhost
   # ::1        localhost.localdomain  localhost
-  # 127.0.1.1  arch.localdomain       arch 
+  # 127.0.1.1  arch.localdomain       arch
+nvim /etc/systemd/network/10-wireless.network
+#  [Match]
+#  Name=wlan0
+#
+#  [Network]
+#  DHCP=yes
+#  DNS=9.9.9.9
+#  DNS=149.112.112.112
 
 passwd  # set a password for the root.
 useradd -m -G wheel -s /bin/bash by
@@ -90,6 +98,31 @@ exit
 
 umount -R /mnt
 reboot
+```
+
+# AFTER REBOOT
+
+```bash
+run0 systemctl enable dbus
+run0 systemctl enable iwd
+run0 systemctl enable systemd.networkd
+run0 systemctl enable systemd.resolved
+run0 systemctl start dbus
+run0 systemctl start iwd
+run0 systemctl start systemd.networkd
+run0 systemctl start systemd.resolved
+
+run0 pacman -Syu foot fnott libnotify fuzzel pipewire wireplumber brightnessctl slurp grim wl-clipboard tree htop yazi man-db man-pages texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar noto-fonts noto-fonts-emoji nvidia-open vlc firefox xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+
+systemctl enable pipewire --user
+systemctl enable wireplumber --user
+systemctl start pipewire --user
+systemctl start wireplumber --user
+
+# If pacman fails to sync repository (unable to unlock db) try:
+# run0 find / -name "db.lck" 2>/dev/null   (possibly it will return '/var/lib/pacman/db.lck'
+# run0 rm /var/lib/pacman/db.lck
+# pacman -Syy
 ```
 
 ## Hardware Acceleration (for Chromium)
