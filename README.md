@@ -30,8 +30,12 @@ mount -o $EXT4_OPTS /dev/nvme0n1p2 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 
+rfkill unblock wifi
+ip link set ´interface´ up
+
 iwctl
 # device list
+# station list
 # station <device_name> scan
 # station <device_name> get-networks
 # device <device_name> connect <network_ssid> --- then enter the passphrase for the network.
@@ -62,6 +66,7 @@ nvim /etc/locale.gen
 locale-gen
 nvim /etc/locale.conf
   # LANG=en_US.UTF-8
+  # LC_COLLATE=C
 nvim /etc/vconsole.conf
   # KEYMAP=trq
 nvim /etc/hostname
@@ -118,7 +123,7 @@ code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent 
 noto-fonts noto-fonts-emoji nvidia-open nvtop vlc firefox wireguard-tools \
 xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
 mesa-utils vulkan-tools inxi dmidecode inetutils usbutils pciutils \
-
+cronie ufw nginx openssh
 
 systemctl enable pipewire --user
 systemctl enable wireplumber --user
@@ -130,8 +135,23 @@ systemctl start wireplumber --user
 # run0 rm /var/lib/pacman/db.lck
 # pacman -Syy
 
+# TLP service activation:
 run0 systemctl enable tlp
 run0 systemctl start tlp
+
+# UFW settings:
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo ufw enable
+sudo ufw status verbose # it should be: incoming=deny, outgoing=allowed
+
+# Wireguard settings: assume you name the file as "linux-vpn.conf"
+wg-quick up /etc/wireguard/linux-vpn.conf
+systemctl enable wg-quick@linux-vpn.service
+systemctl start wg-quick@linux-vpn.service
+ufw route allow out on wlan0
+chown root:root /etc/wireguard/linux-vpn.conf
+chmod 0640 /etc/wireguard/linux-vpn.conf
 ```
 
 ## NVIDIA
