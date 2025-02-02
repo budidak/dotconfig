@@ -112,7 +112,7 @@ run0 systemctl start iwd
 run0 systemctl start systemd.networkd
 run0 systemctl start systemd.resolved
 
-run0 pacman -Syu foot fnott libnotify fuzzel pipewire wireplumber brightnessctl slurp grim wl-clipboard tree htop yazi man-db man-pages texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar noto-fonts noto-fonts-emoji nvidia-open vlc firefox xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+run0 pacman -Syu foot fnott libnotify fuzzel tlp pipewire wireplumber brightnessctl slurp grim wl-clipboard tree htop yazi man-db man-pages bc texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar noto-fonts noto-fonts-emoji nvidia-open nvtop vlc firefox xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 
 systemctl enable pipewire --user
 systemctl enable wireplumber --user
@@ -123,6 +123,9 @@ systemctl start wireplumber --user
 # run0 find / -name "db.lck" 2>/dev/null   (possibly it will return '/var/lib/pacman/db.lck'
 # run0 rm /var/lib/pacman/db.lck
 # pacman -Syy
+
+run0 systemctl enable tlp
+run0 systemctl start tlp
 ```
 
 ## Hardware Acceleration (for Chromium)
