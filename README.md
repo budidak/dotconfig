@@ -112,7 +112,11 @@ run0 systemctl start iwd
 run0 systemctl start systemd.networkd
 run0 systemctl start systemd.resolved
 
-run0 pacman -Syu foot fnott libnotify fuzzel tlp pipewire wireplumber brightnessctl slurp grim wl-clipboard tree htop yazi man-db man-pages bc texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar noto-fonts noto-fonts-emoji nvidia-open nvtop vlc firefox xdg-desktop-portal-hyprland xdg-desktop-portal-gtk wireguard-tools
+run0 pacman -Syu foot fnott libnotify fuzzel tlp pipewire wireplumber brightnessctl slurp grim wl-clipboard tree \
+htopyazi man-db man-pages bc texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git \
+code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar \
+noto-fonts noto-fonts-emoji nvidia-open nvtop vlc firefox wireguard-tools \
+xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 
 systemctl enable pipewire --user
 systemctl enable wireplumber --user
