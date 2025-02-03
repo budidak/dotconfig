@@ -97,7 +97,9 @@ mkinitcpio -P  # Create a new initramfs.
 efibootmgr --unicode  # List all efistub entries.
 efibootmgr -b 0000 -B  # Delete the record labeled with 0000. (Delete all unneccessary entries)
 # efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "Arch Linux" --loader "\vmlinuz-linux" --unicode "root=UUID=$ROOT_UUID rw rootflags=subvol=@ loglevel=3 quiet initrd=\amd-ucode.img initrd=\initramfs-linux.img"
-efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "Arch Linux" --loader "\vmlinuz-linux" --unicode "root=UUID=$ROOT_UUID rw loglevel=3 quiet nvidia-drm.modeset=1 initrd=\amd-ucode.img initrd=\initramfs-linux.img"
+
+efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "Arch Linux" --loader "\vmlinuz-linux" --unicode "root=UUID=$ROOT_UUID rw loglevel=3 quiet nvidia-drm.modeset=1 initrd=\amd-ucode.img initrd=\initramfs-linux.img nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+
 exit
 # EXITED THE CHROOTED ENVIRONMENT
 
@@ -123,7 +125,7 @@ code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent 
 noto-fonts noto-fonts-emoji nvidia-dkms libva-nvidia-driver nvidia-settings nvtop vlc firefox wireguard-tools \
 xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
 mesa-utils vulkan-tools inxi dmidecode inetutils usbutils pciutils \
-cronie ufw nginx openssh
+cronie ufw nginx openssh vulkan-radeon
 
 systemctl enable pipewire --user
 systemctl enable wireplumber --user
@@ -152,6 +154,15 @@ systemctl start wg-quick@linux-vpn.service
 ufw route allow out on wlan0
 chown root:root /etc/wireguard/linux-vpn.conf
 chmod 0640 /etc/wireguard/linux-vpn.conf
+
+# Enable NVIDIA power services
+systemctl enable nvidia-suspend
+systemctl enable nvidia-hibernate
+systemctl enable nvidia-resume
+
+# Check if nvidia sleeps when not in use (the returned number should increase when sleeping even if the runtime_status returns 'active')
+cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_suspended_time
+cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
 ```
 
 ## NVIDIA
