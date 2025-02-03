@@ -162,7 +162,10 @@ iso-codes
 iw
 iwd
 jansson
+java-environment-common
+java-runtime-common
 jbigkit
+jdk-openjdk
 jemalloc
 json-c
 json-glib
@@ -236,6 +239,7 @@ libmodplug
 libmpc
 libmpdclient
 libmysofa
+libnet
 libnetfilter_conntrack
 libnfnetlink
 libnftnl
@@ -500,6 +504,7 @@ vid.stab
 vmaf
 vulkan-headers
 vulkan-icd-loader
+vulkan-radeon
 vulkan-tools
 waybar
 wayland
