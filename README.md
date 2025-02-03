@@ -97,7 +97,7 @@ mkinitcpio -P  # Create a new initramfs.
 efibootmgr --unicode  # List all efistub entries.
 efibootmgr -b 0000 -B  # Delete the record labeled with 0000. (Delete all unneccessary entries)
 # efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "Arch Linux" --loader "\vmlinuz-linux" --unicode "root=UUID=$ROOT_UUID rw rootflags=subvol=@ loglevel=3 quiet initrd=\amd-ucode.img initrd=\initramfs-linux.img"
-efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "Arch Linux" --loader "\vmlinuz-linux" --unicode "root=UUID=$ROOT_UUID rw loglevel=3 quiet initrd=\amd-ucode.img initrd=\initramfs-linux.img"
+efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "Arch Linux" --loader "\vmlinuz-linux" --unicode "root=UUID=$ROOT_UUID rw loglevel=3 quiet nvidia-drm.modeset=1 initrd=\amd-ucode.img initrd=\initramfs-linux.img"
 exit
 # EXITED THE CHROOTED ENVIRONMENT
 
@@ -120,7 +120,7 @@ run0 systemctl start systemd.resolved
 run0 pacman -Syu foot fnott libnotify fuzzel tlp pipewire wireplumber brightnessctl slurp grim wl-clipboard tree \
 htopyazi man-db man-pages bc texinfo less sqlite mariadb postgresql python python-pip nodejs npm yarn pnpm go git \
 code hyprland hypridle hyprcursor hyprlock hyprpaper hyprpicker hyprpolkitagent hyprsunset hyprutils waybar \
-noto-fonts noto-fonts-emoji nvidia-open nvtop vlc firefox wireguard-tools \
+noto-fonts noto-fonts-emoji nvidia-dkms libva-nvidia-driver nvidia-settings nvtop vlc firefox wireguard-tools \
 xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
 mesa-utils vulkan-tools inxi dmidecode inetutils usbutils pciutils \
 cronie ufw nginx openssh
@@ -156,7 +156,11 @@ chmod 0640 /etc/wireguard/linux-vpn.conf
 
 ## NVIDIA
 
-Check if nvidia is running or suspended. Read the docs: https://wiki.archlinux.org/title/PRIME
+Check if nvidia is running or suspended. Read the docs: 
+- https://wiki.archlinux.org/title/PRIME
+- https://wiki.hyprland.org/Nvidia/
+- https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting
+- https://github.com/elFarto/nvidia-vaapi-driver?tab=readme-ov-file#upstream-regressions
 
 ## Hardware Acceleration (for Chromium)
 
