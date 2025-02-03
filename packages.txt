@@ -53,6 +53,7 @@ default-cursors
 desktop-file-utils
 device-mapper
 diffutils
+dkms
 dmidecode
 double-conversion
 duktape
@@ -115,12 +116,18 @@ groff
 gsettings-desktop-schemas
 gsettings-system-schemas
 gsm
+gssdp
+gst-plugins-bad-libs
+gst-plugins-base-libs
+gstreamer
 gtest
 gtk-layer-shell
 gtk-update-icon-cache
 gtk3
 gtkmm3
 guile
+gupnp
+gupnp-igd
 gzip
 harfbuzz
 hdparm
@@ -235,6 +242,7 @@ libnftnl
 libnghttp2
 libnghttp3
 libngtcp2
+libnice
 libnl
 libnotify
 libnsl
@@ -283,6 +291,7 @@ libusbmuxd
 libutf8proc
 libuv
 libva
+libva-nvidia-driver
 libvdpau
 libverto
 libvorbis
@@ -312,6 +321,7 @@ libxkbcommon-x11
 libxkbfile
 libxml2
 libxmu
+libxnvctrl
 libxrandr
 libxrender
 libxshmfence
@@ -370,7 +380,8 @@ npm
 npth
 nspr
 nss
-nvidia-open
+nvidia-dkms
+nvidia-settings
 nvidia-utils
 nvtop
 ocl-icd
@@ -379,6 +390,7 @@ openjpeg2
 openssh
 openssl
 opus
+orc
 p11-kit
 pacman
 pacman-mirrorlist
