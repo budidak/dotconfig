@@ -21,7 +21,7 @@ alias histgrep="history | rg '$1'"
 alias find="fd" # https://github.com/sharkdp/fd
 alias cat="bat" # https://github.com/sharkdp/bat
 alias du="dust" # https://github.com/bootandy/dust
-alias ls="exa -laxghUMmo --git --icons=auto --sort=Name --time-style='+%Y-%m-%d %H:%M'" # https://github.com/ogham/exa
+alias ls="eza -laxghUMmo --git --icons=auto --sort=Name --time-style='+%Y-%m-%d %H:%M'" # https://github.com/eza-community/eza
 alias ps="procs -t" # https://github.com/dalance/procs
 alias tree="tree --dirsfirst -F"
 alias free="free -h"
