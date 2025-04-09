@@ -1,3 +1,9 @@
+//
+// WAYBAR CONFIGURATION FILE
+// ~/.config/waybar/config.jsonc
+// See: `man waybar` | https://github.com/Alexays/Waybar
+//
+
 {
   "layer": "top",
   "position": "top",
@@ -59,7 +65,7 @@
     "on-scroll-up": "brightnessctl -n5 s 5%+",
     "on-scroll-down": "brightnessctl -n5 s 5%-",
     "tooltip": false,
-    "on-click": "pgrep gammastep && pkill gammastep || gammastep -O 3300"
+    "on-click": "pgrep hyprsunset && pkill hyprsunset || hyprsunset -t 3000"
   },
   "wireplumber": {
     "format": "{volume}% {icon}",
@@ -87,4 +93,3 @@
     "icon-size": 18
   }
 }
-

@@ -13,6 +13,14 @@ export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json  # This sets the
 export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json
 # export VK_LAYER_PATH=/usr/share/vulkan/explicit_layer.d
 
+# Environment Variables
+export EDITOR=nvim
 export JAVA_HOME=/usr/lib/jvm/default
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/go
+export CARGO_HOME=$HOME/.cargo
+export RUSTUP_HOME=$HOME/.rustup
+export TERMINAL=foot
 
+# Start a new desktop session
 exec Hyprland

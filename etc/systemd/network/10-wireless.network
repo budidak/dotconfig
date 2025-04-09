@@ -1,0 +1,7 @@
+[Match]
+Name=wlan0
+
+[Network]
+DHCP=yes
+DNS=9.9.9.9
+DNS=149.112.112.112
